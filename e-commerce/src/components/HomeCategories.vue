@@ -6,7 +6,7 @@
             <h2 class="text-black text-3xl">Categories</h2>
         </div>
         <div class="category_cards row">
-            <HomeCategoryCard v-for="category in categories" :key="category.id" :id="category.id" :name="category.name"
+            <HomeCategoryCard v-for="category in categories" :key="category._id" :id="category._id" :name="category.name"
                 :image="category.image" />
         </div>
     </div>
@@ -20,25 +20,21 @@ export default {
     },
     data() {
         return {
-            categories: [
-                {
-                    id: "123",
-                    name: "sport",
-                    image: 'src/assets/images/sports-and-outdoors-flat-orange-design-long-shadow-glyph-icon-hobbies-games-and-sport-e-commerce-department-online-shopping-categories-active-leisure-concept-silhouette-illustration-vector.jpg',
-                },
-                {
-                    id: "12324",
-                    name: "clothes",
-                    image: 'src/assets/images/clothing-category-1.png',
-                },
-                {
-                    id: "1973",
-                    name: "booking",
-                    image: 'src/assets/images/1487274.png',
-                },
-            ],
+            categories: [],
         }
     },
+    created() {
+  (async () => {
+    try {
+      const response = await this.axios.get('http://localhost:3000/api/v1/categories')
+      this.categories = response.data.data
+      console.log(response.data.data)
+    } catch (error) {
+      console.error(error)
+    }
+  })
+  ()
+}
 }
 </script>
 

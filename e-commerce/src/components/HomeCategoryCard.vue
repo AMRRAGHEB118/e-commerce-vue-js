@@ -1,6 +1,6 @@
 <template>
   <router-link :to="{ name: 'products', params: { id: id } }" class="category_card col-3">
-    <img :src="image" alt="Category Image">
+    <img :src="image" :alt="name + ' Image'">
     <div class="category_title">{{ name }}</div>
   </router-link>
 </template>

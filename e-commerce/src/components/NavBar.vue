@@ -6,8 +6,8 @@
         </router-link>
         <div class="hidden md:flex">
           <div class="flex items-center">
-            <router-link class="text-gray-50 px-4 hover:bg-gray-800" to="/demo">demo</router-link>
-            <router-link class="text-gray-50 px-4 hover:bg-gray-800" to="/summer">summer</router-link>
+            <router-link class="text-gray-50 px-4 hover:bg-gray-800" to="/">Home</router-link>
+            <router-link class="text-gray-50 px-4 hover:bg-gray-800" to="/about">About Us</router-link>
           </div>
           <div class="flex items-center">
             <router-link class="btn btn-light" to="/login">login</router-link>
