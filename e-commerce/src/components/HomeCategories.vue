@@ -6,13 +6,8 @@
             <h2 class="text-light text-3xl">Categories</h2>
         </div>
         <div class="category_cards row">
-            <HomeCategoryCard
-            class="category_card col-3"
-            v-for="category in categories"
-            :key="category.id"
-            :name="category.name"
-            :image="category.image"
-        />
+            <HomeCategoryCard v-for="category in categories" :key="category.id" :id="category.id" :name="category.name"
+                :image="category.image" />
         </div>
     </div>
 </template>
@@ -26,19 +21,22 @@ export default {
     data() {
         return {
             categories: [
-            {
-                name:"sport",
-                image: 'src/assets/images/sports-and-outdoors-flat-orange-design-long-shadow-glyph-icon-hobbies-games-and-sport-e-commerce-department-online-shopping-categories-active-leisure-concept-silhouette-illustration-vector.jpg',
-            },
-            {
-                name:"clothes",
-                image: 'src/assets/images/clothing-category-1.png',
-            },
-            {
-                name:"booking",
-                image: 'src/assets/images/1487274.png',
-            },
-        ],
+                {
+                    id: "123",
+                    name: "sport",
+                    image: 'src/assets/images/sports-and-outdoors-flat-orange-design-long-shadow-glyph-icon-hobbies-games-and-sport-e-commerce-department-online-shopping-categories-active-leisure-concept-silhouette-illustration-vector.jpg',
+                },
+                {
+                    id: "12324",
+                    name: "clothes",
+                    image: 'src/assets/images/clothing-category-1.png',
+                },
+                {
+                    id: "1973",
+                    name: "booking",
+                    image: 'src/assets/images/1487274.png',
+                },
+            ],
         }
     },
 }
@@ -52,16 +50,18 @@ export default {
     align-items: center;
     padding: 10px;
 }
-.section_info{
-margin: 30px auto;
+
+.section_info {
+    margin: 30px auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 10px;
 }
-.category_cards{
-margin: 30px auto;
+
+.category_cards {
+    margin: 30px auto;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;

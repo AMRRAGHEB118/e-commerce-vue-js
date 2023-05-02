@@ -1,27 +1,32 @@
 <template>
-<div class="category-card">
-  <img :src='image' alt="Category Image">
-  <div class="category-title">{{ name }}</div>
-</div>
+  <router-link :to="{ name: 'products', params: { id: id } }" class="category_card col-3">
+    <img :src="image" alt="Category Image">
+    <div class="category_title">{{ name }}</div>
+  </router-link>
 </template>
 
 <script>
-export default{
-    props: {
-    name : {
+export default {
+  props: {
+    id: {
       type: String,
       required: true
     },
-    image : {
-        type : String,
-        required: true
+    name: {
+      type: String,
+      required: true
+    },
+    image: {
+      type: String,
+      required: true
     }
+  }
 }
-}
+
 </script>
 
 <style scoped>
-.category-card {
+.category_card {
   border: 1px solid #ccc;
   border-radius: 5px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
@@ -32,11 +37,11 @@ export default{
   padding: 0%;
 }
 
-.category-card:hover .category-title {
+.category_card:hover .category_title {
   background-color: #555;
 }
 
-.category-card img {
+.category_card img {
   display: block;
   height: 200px;
   object-fit: cover;
@@ -45,7 +50,7 @@ export default{
   border-radius: 5px 5px 0 0;
 }
 
-.category-title {
+.category_title {
   background-color: #333;
   width: 100%;
   color: #fff;
