@@ -59,4 +59,9 @@ export default {
   text-align: center;
   transition: background-color 0.2s ease-in-out;
 }
+@media(max-width: 768px){
+  .category_card{
+    width: 60%;
+  }
+}
 </style>

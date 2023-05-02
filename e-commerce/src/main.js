@@ -6,7 +6,7 @@ import * as bootstrap from 'bootstrap'
 import './assets/main.css'
 
 const app = createApp(App)
-app.config.globalProperties.$baseUrl = '/'
+
 app.use(router)
 
 app.mount('#app')

@@ -1,9 +1,9 @@
 <!-- eslint-disable vue/no-unused-vars -->
 <template>
-    <div class="categories bg-slate-600">
+    <div class="categories bg-slate-200">
         <div class="section_info">
             <img class="w-16" src="../assets/images/category-icon.png" alt="">
-            <h2 class="text-light text-3xl">Categories</h2>
+            <h2 class="text-black text-3xl">Categories</h2>
         </div>
         <div class="category_cards row">
             <HomeCategoryCard v-for="category in categories" :key="category.id" :id="category.id" :name="category.name"

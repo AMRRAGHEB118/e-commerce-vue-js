@@ -9,7 +9,7 @@ import FooTer from './components/FooTer.vue';
   <div id="wrapper">
     <NavBar />
     <div class="section">
-      <RouterView />
+      <RouterView  class="router_view"/>
     </div>
     <FooTer />
   </div>
@@ -29,5 +29,8 @@ body {
   font-family: 'Lato', sans-serif;
   font-size: 16px;
   line-height: 1.5;
+}
+.router_view{
+  min-height: 70vh;
 }
 </style>
