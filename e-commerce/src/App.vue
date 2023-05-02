@@ -2,23 +2,22 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import NavBar from './components/NavBar.vue';
+import FooTer from './components/FooTer.vue';
 </script>
 
 <template>
   <div id="wrapper">
     <NavBar />
-  </div>
-
-  <div class="section">
-    <RouterView />
-  </div>
-  <div class="footer bg-black">
-
+    <div class="section">
+      <RouterView />
+    </div>
+    <FooTer />
   </div>
 </template>
 
 <style>
-@import 'bootstrap/dist/css/bootstrap.min.css'; 
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
 html {
   -webkit-text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
