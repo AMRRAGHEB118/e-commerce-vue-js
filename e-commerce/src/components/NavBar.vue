@@ -51,6 +51,6 @@
       return {
         menu_open: false,
       };
-    },
+    }
   };
   </script>
