@@ -26,9 +26,8 @@ export default {
     created() {
   (async () => {
     try {
-      const response = await this.axios.get('http://localhost:3000/api/v1/categories')
+      const response = await this.$http.get('/categories')
       this.categories = response.data.data
-      console.log(response.data.data)
     } catch (error) {
       console.error(error)
     }
