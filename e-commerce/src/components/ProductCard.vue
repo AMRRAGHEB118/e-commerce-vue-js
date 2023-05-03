@@ -1,8 +1,8 @@
 <template>
   <div class="product_card">
     <router-link :to="{name: 'product'}">
-        <img :src="image" :alt="title" class="w-full h-48 object-cover">
-        <div class="px-4 py-2 h-48">
+        <img :src="image" :alt="title" class="w-full h-40 object-cover">
+        <div class="px-4 py-2 h-40">
           <div class="font-bold text-lg mb-2">{{ title }}</div>
           <p class="text-gray-700 text-sm mb-4 truncate">{{ description }}</p>
           <p class="font-bold text-lg mb-2">{{ price }}</p>
