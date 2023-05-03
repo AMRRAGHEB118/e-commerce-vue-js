@@ -1,6 +1,6 @@
 # e-commerce
 
-This template should help get you started developing with Vue 3 in Vite.
+This is a simple project template (generic e-commerce) using Vue js, Vue Router and Axios
 
 ## Recommended IDE Setup
 
