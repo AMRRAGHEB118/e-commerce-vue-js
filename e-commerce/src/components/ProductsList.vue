@@ -1,64 +1,73 @@
-<!-- <template>
-    <div class="flex flex-wrap justify-center my-10 gap-2">
-        <ProductCard
-            v-for="product in products"
-            :key="product._id"
-            :title="product.title"
-            :image="product.image"
-            :price="product.price"
-            :description="product.description"
-            class="w-72 h-96 rounded overflow-hidden shadow-lg mx-2 my-2"
-        />
+<template>
+    <div class="page_container">
+        <div v-show="!no_product" class="list_of_products flex flex-row flex-wrap items-center gap-3">
+            <ProductCard v-for="product in products" :key="product.id" :title="product.title" :image="product.cover_image"
+                :price="product.price.toString()" :description="product.description"
+                class="w-64 h-96 rounded overflow-hidden shadow-lg mx-2 my-2" />
+        </div>
+        <div v-show="no_product" class="text-center w-3/5 my-52 mx-auto">
+            <h1 class="sorry_message text-5xl">
+                Sorry, there are currently no products available in this category, we are working on
+                having it available soon
+            </h1>
+        </div>
+        <div v-show="offline" class="text-center w-3/5 my-52 mx-auto">
+            <h1 class="sorry_message text-5xl">
+                Sorry, there are problem with server, we going to work on it 
+            </h1>
+        </div>
     </div>
 </template>
-
 <script>
 import ProductCard from '../components/ProductCard.vue'
 export default {
+    name: 'ProductsList',
     components: {
         ProductCard,
     },
+    props: ['id'],
     data() {
         return {
-            products: [
-                {
-                    id: 1,
-                    title: 'Product 1',
-                    description:
-                        'Lorem ipsum dolaa aaaaaaa aaaaaaaaaa aaaaaaaaaaaa aaaaaaaaaaaaaaaaaa aaaaaa aaaaaaaaaaaaa aaaaaaaaa or sit amet, consectetur adipiscing elit. Nunc ut elit vel nisi pharetra dapibus. Nullam non justo vel est ultrices eleifend. Nulla facilisi. Nam consectetur nulla sed imperdiet elementum. ',
-                    price: '$9.99',
-                    image: 'https://via.placeholder.com/300x200.png?text=Product+1',
-                },
-                {
-                    id: 2,
-                    title: 'Product 2',
-                    description:
-                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ut elit vel nisi pharetra dapibus. Nullam non justo vel est ultrices eleifend. Nulla facilisi. Nam consectetur nulla sed imperdiet elementum. ',
-                    price: '$19.99',
-                    image: 'https://via.placeholder.com/300x200.png?text=Product+2',
-                },
-                {
-                    id: 3,
-                    title: 'Product 3',
-                    description:
-                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ut elit vel nisi pharetra dapibus. Nullam non justo vel est ultrices eleifend. Nulla facilisi. Nam consectetur nulla sed imperdiet elementum. ',
-                    price: '$29.99',
-                    image: 'https://via.placeholder.com/300x200.png?text=Product+3',
-                },
-                {
-                    id: 4,
-                    title: 'Product 4',
-                    description:
-                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ut elit vel nisi pharetra dapibus. Nullam non justo vel est ultrices eleifend. Nulla facilisi. Nam consectetur nulla sed imperdiet elementum. ',
-                    price: '$39.99',
-                    image: 'https://via.placeholder.com/300x200.png?text=Product+4',
-                },
-            ],
+            products: [],
+            no_product: false,
+            offline: false,
         }
     },
+    beforeMount() {
+        (async () => {
+            try {
+                const response = await this.$http.get(`/categories/${this.id}/products`)
+                this.products = await response.data.data
+                if (this.products.length < 1) {
+                    this.no_product = true
+                }
+            } catch (err) {
+                this.offline = true
+            }
+        })()
+    },
 }
-</script> -->
+</script>
+<style scoped>
+.page_container {
+    min-height: 70vh;
+}
 
-<template>
-    <div></div>
-</template>
+@media (max-width: 1024px) {
+    .sorry_message {
+        font-size: larger;
+    }
+}
+
+@media (max-width: 768px) {
+    .sorry_message {
+        font-size: large;
+    }
+}
+
+@media (max-width: 426px) {
+    .sorry_message {
+        font-size: medium;
+    }
+}
+</style>
