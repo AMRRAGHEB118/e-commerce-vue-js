@@ -1,14 +1,19 @@
 <template>
-    <div class="page_container flex flex-col flex-wrap justify-center items-center my-10">
-        <div v-show="!sorry_message" class="list_of_products flex flex-row flex-wrap justify-center items-center gap-3">
+    <div class="page_container">
+        <div v-show="!no_product" class="list_of_products flex flex-row flex-wrap items-center gap-3">
             <ProductCard v-for="product in products" :key="product.id" :title="product.title" :image="product.cover_image"
                 :price="product.price.toString()" :description="product.description"
                 class="w-64 h-96 rounded overflow-hidden shadow-lg mx-2 my-2" />
         </div>
-        <div v-show="sorry_message" class="text-center w-4/5">
+        <div v-show="no_product" class="text-center w-3/5 my-52 mx-auto">
             <h1 class="sorry_message text-5xl">
                 Sorry, there are currently no products available in this category, we are working on
                 having it available soon
+            </h1>
+        </div>
+        <div v-show="offline" class="text-center w-3/5 my-52 mx-auto">
+            <h1 class="sorry_message text-5xl">
+                Sorry, there are problem with server, we going to work on it 
             </h1>
         </div>
     </div>
@@ -24,19 +29,20 @@ export default {
     data() {
         return {
             products: [],
-            sorry_message: false,
+            no_product: false,
+            offline: false,
         }
     },
     beforeMount() {
         (async () => {
             try {
                 const response = await this.$http.get(`/categories/${this.id}/products`)
-                this.products = response.data.data
+                this.products = await response.data.data
                 if (this.products.length < 1) {
-                    this.sorry_message = true
+                    this.no_product = true
                 }
-            } catch (error) {
-                console.error(error)
+            } catch (err) {
+                this.offline = true
             }
         })()
     },
